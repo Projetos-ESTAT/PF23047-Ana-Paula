@@ -38,6 +38,36 @@ t.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
 wilcox.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = TDRdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em TDR") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_TDR.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = TDRdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em TDR") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_TDR.pdf", width = 158, height = 93, units = "mm")
+
 
 #GAI----
 dados$GAIdif <- dados$GAI.2-dados$GAI.1
@@ -49,6 +79,37 @@ t.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
         dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 wilcox.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = GAIdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em GAI") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_GAI.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = GAIdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em GAI") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_GAI.pdf", width = 158, height = 93, units = "mm")
+
 
 
 #CESD-D----
@@ -62,6 +123,36 @@ t.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
 wilcox.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = CESD.Ddif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em CESD.D") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_CESD_D.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = CESD.Ddif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em CESD.D") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_CESD_D.pdf", width = 158, height = 93, units = "mm")
+
 
 #ANIMAIS----
 dados$ANIMAISdif <- dados$ANIMAIS.2-dados$ANIMAIS.1
@@ -73,6 +164,37 @@ t.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
        dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 wilcox.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = ANIMAISdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em ANIMAIS") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_ANIMAIS.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = ANIMAISdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em ANIMAIS") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_ANIMAIS.pdf", width = 158, height = 93, units = "mm")
+
 
 
 #Memória imediata----
@@ -86,8 +208,38 @@ t.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
 wilcox.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = M.IMEDIATAdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em Memória Imediata") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_M.IMEDIATA.pdf", width = 158, height = 93, units = "mm")
 
-#Memória  tardia----
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = M.IMEDIATAdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em Memória Imediata") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_M.IMEDIATAdif.pdf", width = 158, height = 93, units = "mm")
+
+
+#Memória tardia----
 dados$M.TARDIAdif <- dados$M.TARDIA.2-dados$M.TARDIA.1
 shapiro.test(dados$M.TARDIAdif)
 shapiro.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
@@ -97,6 +249,36 @@ t.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
        dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 wilcox.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = M.TARDIAdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em Memória Tardia") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_M.TARDIAdif.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = M.TARDIAdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em Memória Tardia") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_M.TARDIAdif.pdf", width = 158, height = 93, units = "mm")
 
 
 #Reconhecimento----
@@ -110,6 +292,35 @@ t.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
 wilcox.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
             dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
 
+#boxplot
+#Uni
+ggplot(dados) +
+  aes(
+    x = factor(""),
+    y = RECONHECIMENTOdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "", y = "Aumento em Reconhecimento") +
+  theme_estat()
+ggsave("resultados/Stefan/box_uni_RECONHECIMENTO.pdf", width = 158, height = 93, units = "mm")
+
+#Bi
+ggplot(dados) +
+  aes(
+    x = TIPO.DO.GRUPO,
+    y = RECONHECIMENTOdif
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Grupo", y = "Aumento em Reconhecimento") +
+  theme_estat()
+ggsave("resultados/Stefan/box_bi_RECONHECIMENTO.pdf", width = 158, height = 93, units = "mm")
 
 
 #Testes pareados sem separação entre controle e experimento (testou-se as diferenças entre depois e antes)----
