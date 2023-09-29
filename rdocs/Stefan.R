@@ -236,7 +236,7 @@ ggplot(dados) +
   ) +
   labs(x = "Grupo", y = "Aumento em Memória Imediata") +
   theme_estat()
-ggsave("resultados/Stefan/box_bi_M.IMEDIATAdif.pdf", width = 158, height = 93, units = "mm")
+ggsave("resultados/Stefan/box_bi_M.IMEDIATA.pdf", width = 158, height = 93, units = "mm")
 
 
 #Memória tardia----
@@ -264,7 +264,7 @@ ggplot(dados) +
   ) +
   labs(x = "", y = "Aumento em Memória Tardia") +
   theme_estat()
-ggsave("resultados/Stefan/box_uni_M.TARDIAdif.pdf", width = 158, height = 93, units = "mm")
+ggsave("resultados/Stefan/box_uni_M.TARDIA.pdf", width = 158, height = 93, units = "mm")
 
 #Bi
 ggplot(dados) +
@@ -278,7 +278,7 @@ ggplot(dados) +
   ) +
   labs(x = "Grupo", y = "Aumento em Memória Tardia") +
   theme_estat()
-ggsave("resultados/Stefan/box_bi_M.TARDIAdif.pdf", width = 158, height = 93, units = "mm")
+ggsave("resultados/Stefan/box_bi_M.TARDIA.pdf", width = 158, height = 93, units = "mm")
 
 
 #Reconhecimento----
