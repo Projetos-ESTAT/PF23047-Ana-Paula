@@ -22,7 +22,7 @@ source("rdocs/source/packages.R")
 # de teste depreciados, ou ao menos deixando como comentário. Dê preferência
 # as funções dos pacotes contidos no Tidyverse para realizar suas análises.
 # ---------------------------------------------------------------------------- #
-dados <- read.xlsx("banco/ESTAT.xlsx", sheetIndex = 1)
+dados <- read.xlsx("banco/planilha.xlsx", sheetIndex = 1)
 
 
 #Testes pareados com separação entre controle e experimento (testou-se as diferenças entre depois e antes)
@@ -30,13 +30,13 @@ dados <- read.xlsx("banco/ESTAT.xlsx", sheetIndex = 1)
 #TDR----
 dados$TDRdif <- dados$TDR.2-dados$TDR.1
 shapiro.test(dados$TDRdif)
-shapiro.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$TDRdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$TDRdif[dados$GRUPO=="Controle"])
 #Não normal. Teste de medianas
-t.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$TDRdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$TDRdif[dados$GRUPO=="Experimental"],
+       dados$TDRdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$TDRdif[dados$GRUPO=="Experimental"],
+            dados$TDRdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -57,7 +57,7 @@ ggsave("resultados/Stefan/box_uni_TDR.pdf", width = 158, height = 93, units = "m
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = TDRdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -72,13 +72,13 @@ ggsave("resultados/Stefan/box_bi_TDR.pdf", width = 158, height = 93, units = "mm
 #GAI----
 dados$GAIdif <- dados$GAI.2-dados$GAI.1
 shapiro.test(dados$GAIdif)
-shapiro.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$GAIdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$GAIdif[dados$GRUPO=="Controle"])
 #Normal. Teste de médias
-t.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-        dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$GAIdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$GAIdif[dados$GRUPO=="Experimental"],
+        dados$GAIdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$GAIdif[dados$GRUPO=="Experimental"],
+            dados$GAIdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -99,7 +99,7 @@ ggsave("resultados/Stefan/box_uni_GAI.pdf", width = 158, height = 93, units = "m
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = GAIdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -115,13 +115,13 @@ ggsave("resultados/Stefan/box_bi_GAI.pdf", width = 158, height = 93, units = "mm
 #CESD-D----
 dados$CESD.Ddif <- dados$CESD.D.2-dados$CESD.D.1
 shapiro.test(dados$CESD.Ddif)
-shapiro.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$CESD.Ddif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$CESD.Ddif[dados$GRUPO=="Controle"])
 #Normal. Teste de médias
-t.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$CESD.Ddif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$CESD.Ddif[dados$GRUPO=="Experimental"],
+       dados$CESD.Ddif[dados$GRUPO=="Controle"])
+wilcox.test(dados$CESD.Ddif[dados$GRUPO=="Experimental"],
+            dados$CESD.Ddif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -142,7 +142,7 @@ ggsave("resultados/Stefan/box_uni_CESD_D.pdf", width = 158, height = 93, units =
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = CESD.Ddif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -157,13 +157,13 @@ ggsave("resultados/Stefan/box_bi_CESD_D.pdf", width = 158, height = 93, units = 
 #ANIMAIS----
 dados$ANIMAISdif <- dados$ANIMAIS.2-dados$ANIMAIS.1
 shapiro.test(dados$ANIMAISdif)
-shapiro.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$ANIMAISdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$ANIMAISdif[dados$GRUPO=="Controle"])
 #Normal. Teste de médias
-t.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$ANIMAISdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$ANIMAISdif[dados$GRUPO=="Experimental"],
+       dados$ANIMAISdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$ANIMAISdif[dados$GRUPO=="Experimental"],
+            dados$ANIMAISdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -184,7 +184,7 @@ ggsave("resultados/Stefan/box_uni_ANIMAIS.pdf", width = 158, height = 93, units 
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = ANIMAISdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -200,13 +200,13 @@ ggsave("resultados/Stefan/box_bi_ANIMAIS.pdf", width = 158, height = 93, units =
 #Memória imediata----
 dados$M.IMEDIATAdif <- dados$M.IMEDIATA.2-dados$M.IMEDIATA.1
 shapiro.test(dados$M.IMEDIATAdif)
-shapiro.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$M.IMEDIATAdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$M.IMEDIATAdif[dados$GRUPO=="Controle"])
 #Normal. Teste de médias
-t.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$M.IMEDIATAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$M.IMEDIATAdif[dados$GRUPO=="Experimental"],
+       dados$M.IMEDIATAdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$M.IMEDIATAdif[dados$GRUPO=="Experimental"],
+            dados$M.IMEDIATAdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -227,7 +227,7 @@ ggsave("resultados/Stefan/box_uni_M.IMEDIATA.pdf", width = 158, height = 93, uni
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = M.IMEDIATAdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -242,13 +242,13 @@ ggsave("resultados/Stefan/box_bi_M.IMEDIATA.pdf", width = 158, height = 93, unit
 #Memória tardia----
 dados$M.TARDIAdif <- dados$M.TARDIA.2-dados$M.TARDIA.1
 shapiro.test(dados$M.TARDIAdif)
-shapiro.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$M.TARDIAdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$M.TARDIAdif[dados$GRUPO=="Controle"])
 #Não normal. Teste de medianas
-t.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$M.TARDIAdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$M.TARDIAdif[dados$GRUPO=="Experimental"],
+       dados$M.TARDIAdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$M.TARDIAdif[dados$GRUPO=="Experimental"],
+            dados$M.TARDIAdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -269,7 +269,7 @@ ggsave("resultados/Stefan/box_uni_M.TARDIA.pdf", width = 158, height = 93, units
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = M.TARDIAdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
@@ -284,13 +284,13 @@ ggsave("resultados/Stefan/box_bi_M.TARDIA.pdf", width = 158, height = 93, units 
 #Reconhecimento----
 dados$RECONHECIMENTOdif <- dados$RECONHECIMENTO.2-dados$RECONHECIMENTO.1
 shapiro.test(dados$RECONHECIMENTOdif)
-shapiro.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"])
-shapiro.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+shapiro.test(dados$RECONHECIMENTOdif[dados$GRUPO=="Experimental"])
+shapiro.test(dados$RECONHECIMENTOdif[dados$GRUPO=="Controle"])
 #Não normal. Teste de medianas
-t.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-       dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
-wilcox.test(dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Experimental"],
-            dados$RECONHECIMENTOdif[dados$TIPO.DO.GRUPO=="Grupo Controle"])
+t.test(dados$RECONHECIMENTOdif[dados$GRUPO=="Experimental"],
+       dados$RECONHECIMENTOdif[dados$GRUPO=="Controle"])
+wilcox.test(dados$RECONHECIMENTOdif[dados$GRUPO=="Experimental"],
+            dados$RECONHECIMENTOdif[dados$GRUPO=="Controle"])
 
 #boxplot
 #Uni
@@ -311,7 +311,7 @@ ggsave("resultados/Stefan/box_uni_RECONHECIMENTO.pdf", width = 158, height = 93,
 #Bi
 ggplot(dados) +
   aes(
-    x = TIPO.DO.GRUPO,
+    x = GRUPO,
     y = RECONHECIMENTOdif
   ) +
   geom_boxplot(fill = c("#A11D21"), width = 0.5) +
