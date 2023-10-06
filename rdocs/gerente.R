@@ -22,6 +22,9 @@ source("rdocs/source/packages.R")
 # de teste depreciados, ou ao menos deixando como comentário. Dê preferência
 # as funções dos pacotes contidos no Tidyverse para realizar suas análises.
 # ---------------------------------------------------------------------------- #
+library(readxl)
+planilha <- read_excel("banco/planilha.xlsx")
+View(planilha)
 
 #TDR2 
 tabela <- planilha[c(1:18),]
@@ -32,9 +35,8 @@ tabela <- tabela %>%
   na.omit()
 
 tabela_cont <- table(tabela$ESCOLARIDADE,tabela$`TDR 2`)
-(tabela_cont) # frequência seja de pelo menos 5 elementos em cada célula da tabela
-chisq.test(tabela_cont, correct = TRUE)
 
+(tabela_cont) # frequência seja de pelo menos 5 elementos em cada célula da tabela
 
 unique(tabela$ESCOLARIDADE)
 
@@ -56,14 +58,24 @@ install.packages("coin")
 
 library(coin)
 
-
 resultado_teste <- spearman_test(ensino ~ `TDR 2`, data = teste)
 
 print(resultado_teste)
 
+ggplot(teste) +
+  aes(
+    x = as.character(`ensino`),
+    y = `TDR 2`
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Transmissão", y = "Consumo em Cidade (milhas/galão)") +
+  theme_estat()
 
-#GAI2
 
+#GAI
 tabela <- planilha[c(1:18),]
 
 
@@ -170,6 +182,27 @@ tuk <- TukeyHSD(anova)
 
 tuk
 
+lab <- c("EF incompleto","EM incompleto","EM completo","ES completo","Pós-\ngraduação")
+ggplot(teste) +
+  aes(
+    x = as.character(`ensino`),
+    y = `ANIMAIS 2`
+  ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  scale_x_discrete(labels = c(
+    "1" = "EF incompleto",
+    "2" = "EM incompleto",
+    "3" = "EM completo",
+    "4" = "ES completo",
+    "5" = "Pós-\ngraduação"
+  ))+
+  labs(x = "Escolaridade" , y = "Aumento da fluência verbal") +
+  theme_estat()
+
+ggsave("box_bi.pdf", width = 158, height = 93, units = "mm")
 
 #M.IMEDIATA
 
